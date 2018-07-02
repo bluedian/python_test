@@ -57,6 +57,7 @@ def redis_list():
     print('cmfu1_type:',type(cmfu1))
     print(cmfu2)
     print(cmfu2.decode('utf-8'))
+    print(type(cmfu2.decode('utf-8')))
 
 redis_list()
 
