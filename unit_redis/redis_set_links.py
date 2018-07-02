@@ -15,13 +15,13 @@ def getHtml(query_url):
         driver = webdriver.Chrome()
     driver.get(query_url)
     print(driver.title)
+    html = driver.page_source
     driver.quit()
     display.stop()
     try:
         redis_write(driver.title,query_url)
     except:
         pass
-    html = driver.page_source
     return html
 
 def redis_write(key_name,key_value):
