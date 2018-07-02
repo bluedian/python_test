@@ -7,6 +7,11 @@ import requests
 def redis_list_read(data_name):
     r = redis.Redis(host='127.0.0.1', port=6379)
     abc = r.lpop(data_name)
+
+    if abc is None:
+        print('无数据了')
+        exit()
+
     print(abc)
     print(type(abc))
 
