@@ -58,6 +58,8 @@ def redis_list():
     print(cmfu2)
     print(cmfu2.decode('utf-8'))
     print(type(cmfu2.decode('utf-8')))
+    cmfu3 = r.lpop('list_guo').decode('utf-8')
+    print('cmfu3:-->',cmfu3,type(cmfu3))
 
 redis_list()
 
