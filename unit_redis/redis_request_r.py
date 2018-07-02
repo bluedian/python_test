@@ -9,8 +9,15 @@ def redis_list_read(data_name):
     abc=r.lpop(data_name)
     print(abc)
     print(type(abc))
-    print(abc.decode('utf-8'))
 
+    abc_dic=abc.decode('utf-8')
+    print('abc_dic-->type-->:',type(abc_dic))
+
+    try:
+        abc_json=json.loads(abc_dic)
+        print(abc_json['name'])
+    except
+        print(abc_json)
 
 
 redis_list_read('qidian_name')
