@@ -13,7 +13,10 @@ print(r.get('foo'))
 r.set('foo1', 'Bar1')
 r.set('foo2', 'Bar2')
 r.set('foo3', 'Bar3')
-r.set('foo4', 'Bar4')
+abc='string'
+
+r.set('foo4', abc)
 
 print(str(r.get('foo1')))
-print(type(r.get('foo1')))
+print(type(r.get('foo2')))
+print(r.get('foo4'))
