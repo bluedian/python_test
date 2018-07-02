@@ -16,3 +16,4 @@ r.set('foo3', 'Bar3')
 r.set('foo4', 'Bar4')
 
 print(str(r.get('foo1')))
+print(type(r.get('foo1')))
