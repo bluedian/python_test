@@ -38,3 +38,7 @@ print(type(re_date))
 u1=re_date.decode('utf-8')
 print(u1)
 print(type(u1))
+
+guo_01=json.loads(u1)
+print('a1:',guo_01['a1'])
+
