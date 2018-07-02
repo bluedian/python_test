@@ -17,7 +17,9 @@ def redis_list_read(data_name):
         abc_json=json.loads(abc_dic)
         print(abc_json['name'])
     except:
-        print(abc_json)
+        print('---------')
+        print(abc_dic)
+        print(type(abc_dic))
 
 
 redis_list_read('qidian_name')
