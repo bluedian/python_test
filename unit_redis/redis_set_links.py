@@ -20,13 +20,15 @@ def getHtml(query_url):
     try:
         redis_write(driver.title,query_url)
     except:
-        return
+        pass
     html = driver.page_source
     return html
 
 def redis_write(key_name,key_value):
     r = redis.Redis(host='127.0.0.1', port=6379)
+    print(key_name,key_value)
     r.set(key_name,key_value)
+
 
 def soup_links(query_url):
     html=getHtml(query_url)
