@@ -16,7 +16,7 @@ def redis_list_read(data_name):
     try:
         abc_json=json.loads(abc_dic)
         print(abc_json['name'])
-    except
+    except:
         print(abc_json)
 
 
