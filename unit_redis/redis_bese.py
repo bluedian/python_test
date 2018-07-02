@@ -50,8 +50,13 @@ def redis_list():
         list_num='http://www.baidu.com/wd=abc%d' % (i)
         r.lpush('list_guo',list_num)
 
-    print(r.lpop('list_guo'))
-    print(type(r.lpop('list_guo')))
+    cmfu1=r.lpop('list_guo')
+    cmfu2 = r.lpop('list_guo')
+
+    print('cmfu1:',cmfu1)
+    print('cmfu1_type:',type(cmfu1))
+    print(cmfu2)
+    print(cmfu2.decode('utf-8'))
 
 redis_list()
 
