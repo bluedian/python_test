@@ -30,8 +30,12 @@ def redis_write(key_name,key_value):
 
 def soup_links(query_url):
     html=getHtml(query_url)
+    if html is None:
+        print('没有取到网页')
+        exit()
     soup = BeautifulSoup(html, 'html.parser')
-    links_list = soup.find_all('a',attrs={'href'})
+    #links_list = soup.find_all('a',attrs={'href'})
+    links_list = soup.find_all('a')
     for item in links_list:
         print(item)
 
