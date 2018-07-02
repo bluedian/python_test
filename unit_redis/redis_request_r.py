@@ -14,7 +14,7 @@ def redis_list_read(data_name):
     print('abc_dic-->type-->:', type(abc_dic))
 
     try:
-        abc_json = json.loads(abc_dic)
+        abc_json = json.loads(abc_dic.replace("'", "\""))
         print(abc_json)
         print(type(abc_json))
         print(abc_json['name'])
@@ -23,7 +23,7 @@ def redis_list_read(data_name):
         print(abc_dic)
         print(type(abc_dic))
 
-    abc_json = json.loads(abc_dic)
+    abc_json = json.loads(abc_dic.replace("'", "\""))
     print(abc_json)
 
 
