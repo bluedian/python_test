@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
-
-from unit_server import config_url
+from unit_config import config_url
 import requests
 import socket
-
 
 class server_status():
     def __init__(self):
