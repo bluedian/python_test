@@ -3,6 +3,8 @@
 from unit_config import config_url
 import requests
 import socket
+import sys
+syspath=sys.path
 
 
 class server_status():
