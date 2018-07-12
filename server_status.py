@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import config_url
+from unit_server import config_url
 import requests
 import socket
 
