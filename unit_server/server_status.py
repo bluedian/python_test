@@ -5,6 +5,7 @@ import requests
 import socket
 import sys
 syspath=sys.path
+print(syspath)
 
 
 class server_status():
@@ -12,6 +13,7 @@ class server_status():
         self.version='0.0.1'
         self.hostName='test_server'
         self.serverUrl='http://oa.9oe.com/index.php/book/apiserver'
+
 
     def get_hostname(self):
         try:
