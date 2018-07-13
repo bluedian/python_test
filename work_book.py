@@ -1,7 +1,8 @@
 
-
+from bs4 import BeautifulSoup
 import requests
 import json
+import re
 
 
 
@@ -35,11 +36,29 @@ class work_book():
         print(book_key['book_key'])
         return book_key['book_key']
 
+    def soupLinkAll(self,query_url):
+        html=self.getHtml(query_url)
+        if html is None:
+            return
+        soup = BeautifulSoup(html, 'html.parser')
+        #a_all=soup.find_all('a',attrs={'href':re.compile("^https://www.baidu.com")})
+        a_all = soup.find_all('a')
+        for item in a_all:
+            text_lower=item.get_text().lower()
+            if text_lower.find('aaaa')>=0:
+                #print(item)
+                print(item.get_text(),item.attrs['href'])
+
+
+
+
     def word_one(self):
         query_url=self.baidu_url+self.getBookKey()
-        work_html=self.getHtml(query_url)
+        #work_html=self.getHtml(query_url)
+        print(query_url)
+        self.soupLinkAll(query_url)
 
-        print(work_html)
+        #print(work_html)
 
 
 
