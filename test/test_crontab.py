@@ -5,7 +5,7 @@ class test_crontab():
     def __init__(self):
         self.my_cron=CronTab(user=True)
         self.command=''
-        self.conment='test_crontab_job'
+        self.coment='test_crontab_job'
         self.time_m='*'
         self.time_h='*'
         self.day_d='*'
@@ -14,34 +14,35 @@ class test_crontab():
         pass
 
     def appendCron(self):
+        self.delCron(self.coment)
         my_user_cron = self.my_cron
         job = my_user_cron.new(command='echo date >> ~/time.log')
         job.setall('*/2 * * * *')
-        job.set_comment(self.conment)
-        iter = my_user_cron.find_comment(self.conment)
+        job.set_comment(self.coment)
+        iter = my_user_cron.find_comment(self.coment)
         my_user_cron.write()
         print(iter)
 
-    def isCron(self):
+    def appendCron10(self,comd='echo date >> ~/time.log',comt='test_crontab_job'):
+        self.delCron(self.coment)
         my_user_cron = self.my_cron
-        iter = my_user_cron.find_comment(self.conment)
+        job = my_user_cron.new(command=comd)
+        job.minute.on(5)
+        job.hour.every(10)  # Set to * */10 * * *
+        job.dom.on(1)
+        job.month.every(3)
+        job.set_comment(comt)
+        my_user_cron.write()
 
-        for cron in my_user_cron:
-            print(cron)
 
-        print(iter)
-        if iter is None:
-            print('不存在')
-        else:
-            print('找到了')
 
-    def delCron(self):
+    def delCron(self,comt='test_crontab_job'):
         my_user_cron = self.my_cron
-        iter = my_user_cron.find_comment(self.conment)
+        iter = my_user_cron.find_comment(comt)
         print(my_user_cron.remove(iter))
 
 
 if __name__ == '__main__':
     #test_crontab().appendCron()
     print('test------>')
-    test_crontab().delCron()
+    test_crontab().appendCron10()
