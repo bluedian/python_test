@@ -35,5 +35,6 @@ def delCron(comt='test_crontab_job'):
     my_user_cron = CronTab(user=True)
     iter = my_user_cron.find_comment(comt)
     print(my_user_cron.remove(iter))
+    my_user_cron.write()
 
 
