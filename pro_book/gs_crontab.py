@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from crontab import CronTab
 
-class test_crontab():
+class gs_crontab():
     def __init__(self):
         self.my_cron=CronTab(user=True)
         self.command=''

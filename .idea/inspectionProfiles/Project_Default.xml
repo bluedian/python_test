@@ -5,6 +5,8 @@
       <option name="ignoredIdentifiers">
         <list>
           <option value="gs_config" />
+          <option value="book_crontab" />
+          <option value="gs_crontab" />
         </list>
       </option>
     </inspection_tool>
