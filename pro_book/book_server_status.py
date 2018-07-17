@@ -24,8 +24,8 @@ class book_server_status():
     def init_crontab(self):
         commond='python3 '+self.indexPathName
         comment=self.indexCronComt
-        cron=gs_crontab()
-        cron.appendCron10(comd=commond,comt=comment)
+        cron=gs_crontab.appendCron10(comd=commond,comt=comment)
+
 
 
 
