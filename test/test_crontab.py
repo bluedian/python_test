@@ -13,7 +13,7 @@ class test_crontab():
         self.day_y='*'
         pass
 
-    def append(self):
+    def appendCron(self):
         my_user_cron = self.my_cron
         job = my_user_cron.new(command='echo date >> ~/time.log')
         job.setall('*/2 * * * *')
@@ -22,7 +22,7 @@ class test_crontab():
         my_user_cron.write()
         print(iter)
 
-    def isSave(self):
+    def isCron(self):
         my_user_cron = self.my_cron
         iter = my_user_cron.find_comment(self.conment)
 
@@ -35,5 +35,13 @@ class test_crontab():
         else:
             print('找到了')
 
+    def delCron(self):
+        my_user_cron = self.my_cron
+        iter = my_user_cron.find_comment(self.conment)
+        print(my_user_cron.remove(iter))
+
+
 if __name__ == '__main__':
-    test_crontab().isSave()
+    test_crontab().appendCron()
+    print('test------>')
+    test_crontab().delCron()
