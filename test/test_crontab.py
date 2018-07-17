@@ -27,14 +27,20 @@ class test_crontab():
         self.delCron(self.coment)
         my_user_cron = self.my_cron
         job = my_user_cron.new(command=comd)
+        job.set_comment(comt)
+        job.minute.every(10)
+        my_user_cron.write()
+
+    def appendCron_all(self,comd='echo date >> ~/time.log',comt='test_crontab_job'):
+        self.delCron(self.coment)
+        my_user_cron = self.my_cron
+        job = my_user_cron.new(command=comd)
         job.minute.on(5)
         job.hour.every(10)  # Set to * */10 * * *
         job.dom.on(1)
         job.month.every(3)
         job.set_comment(comt)
         my_user_cron.write()
-
-
 
     def delCron(self,comt='test_crontab_job'):
         my_user_cron = self.my_cron
