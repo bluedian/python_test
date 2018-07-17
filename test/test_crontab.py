@@ -26,6 +26,10 @@ class test_crontab():
         my_user_cron = self.my_cron
         iter = my_user_cron.find_comment(self.conment)
         print(iter)
+        if iter is None:
+            print('不存在')
+        else:
+            print('找到了')
 
 if __name__ == '__main__':
-    test_crontab().append()
+    test_crontab().isSave()
