@@ -37,7 +37,3 @@ def delCron(comt='test_crontab_job'):
     print(my_user_cron.remove(iter))
 
 
-if __name__ == '__main__':
-    #test_crontab().appendCron()
-    print('test------>')
-    appendCron10()
