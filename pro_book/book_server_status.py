@@ -2,8 +2,7 @@
 import sys
 sys.path.append('..')
 import gs_config
-#import gs_crontab
-from pro_book import gs_crontab
+import gs_crontab_def
 import requests
 import socket
 import os
@@ -26,8 +25,8 @@ class book_server_status():
         commond='python3 '+self.indexPathName
         comment=self.indexCronComt
         #gs_crontab().appendCron10()
-        abc=gs_crontab()
-        abc.appendCron10()
+        gs_crontab_def.appendCron10()
+
 
         #gs_crontab.appendCron10(comd=commond,comt=comment)
 

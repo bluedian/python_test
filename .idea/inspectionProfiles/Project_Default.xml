@@ -7,6 +7,7 @@
           <option value="gs_config" />
           <option value="book_crontab" />
           <option value="gs_crontab" />
+          <option value="gs_crontab_def" />
         </list>
       </option>
     </inspection_tool>
