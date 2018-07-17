@@ -7,6 +7,7 @@ from urllib.parse import urljoin
 
 class work_book():
     def __init__(self):
+        self.version = '0.0.1'
         self.server_url = 'http://oa.9oe.com/index.php/book/apibook'
         self.baidu_url = 'https://www.baidu.com/s?wd='
 
@@ -49,10 +50,8 @@ class work_book():
         a_all = soup.find_all('a')
         for item in a_all:
             text_lower = item.get_text().lower()
-            # print(text_lower)
             if text_lower.find(book_name) >= 0:
-                # print(item)
-                print(item.get_text(), item.attrs['href'])
+                # print(item.get_text(), item.attrs['href'])
                 self.work_two_1(item.attrs['href'])
 
     def getIndexUrl(self, query_url, index=0):
@@ -102,5 +101,4 @@ class work_book():
 
 
 if __name__ == '__main__':
-
     work_book().run()
