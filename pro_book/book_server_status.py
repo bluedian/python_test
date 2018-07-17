@@ -3,8 +3,8 @@ import sys
 sys.path.append('.')
 sys.path.append('..')
 print(sys.path)
-#import gs_config
-from pro_book import gs_config
+import gs_config
+#from pro_book import gs_config
 from unit_config import config_url
 import requests
 import socket
