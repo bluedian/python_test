@@ -54,5 +54,9 @@ class book_server_status():
 
 
 if __name__ == '__main__':
-    book_server_status().init_crontab()
-    #book_server_status().run()
+
+    if sys.argv[1]=='init':
+        book_server_status().init_crontab()
+    else:
+        print('aaaa')
+        #book_server_status().run()
