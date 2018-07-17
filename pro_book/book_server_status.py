@@ -2,7 +2,8 @@
 import sys
 sys.path.append('..')
 import gs_config
-import gs_crontab
+#import gs_crontab
+from pro_book import gs_crontab
 import requests
 import socket
 import os
