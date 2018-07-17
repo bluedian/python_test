@@ -24,8 +24,8 @@ class book_server_status():
     def init_crontab(self):
         commond='python3 '+self.indexPathName
         comment=self.indexCronComt
-        gscron=gs_crontab()
-        gscron.appendCron10(comd=commond,comt=comment)
+        gs_crontab.appendCron10()
+        #gs_crontab.appendCron10(comd=commond,comt=comment)
 
 
     def get_hostname(self):
