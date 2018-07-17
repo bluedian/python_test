@@ -25,6 +25,10 @@ class test_crontab():
     def isSave(self):
         my_user_cron = self.my_cron
         iter = my_user_cron.find_comment(self.conment)
+
+        for cron in my_user_cron:
+            print(cron)
+
         print(iter)
         if iter is None:
             print('不存在')
