@@ -50,4 +50,4 @@ class gs_crontab():
 if __name__ == '__main__':
     #test_crontab().appendCron()
     print('test------>')
-    test_crontab().appendCron10()
+    gs_crontab().appendCron10()
