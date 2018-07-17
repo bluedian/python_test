@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 import sys
 sys.path.append('..')
-import gs_config
+#import gs_config
+from pro_book import gs_config
+from unit_config import config_url
 import requests
 import socket
 
