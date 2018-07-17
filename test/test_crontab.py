@@ -42,6 +42,6 @@ class test_crontab():
 
 
 if __name__ == '__main__':
-    test_crontab().appendCron()
+    #test_crontab().appendCron()
     print('test------>')
     test_crontab().delCron()
