@@ -10,7 +10,7 @@ import os
 
 class book_server_status():
     def __init__(self):
-        self.version = '0.0.1'
+        self.version = '0.0.2'
         self.indexPath=os.path.abspath(os.path.dirname(__file__))
         self.indexName='book_server_status.py'
         self.indexPathName=self.indexPath+'\\'+self.indexName

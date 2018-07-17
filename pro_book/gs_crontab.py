@@ -1,8 +1,14 @@
 # -*- coding: utf-8 -*-
 from crontab import CronTab
+import os
 
 class gs_crontab():
     def __init__(self):
+        self.version = '0.0.2'
+        self.indexPath=os.path.abspath(os.path.dirname(__file__))
+        self.indexName='gs_crontab.py'
+        self.indexPathName=self.indexPath+'\\'+self.indexName
+
         self.my_cron=CronTab(user=True)
         self.command=''
         self.coment='test_crontab_job'

@@ -7,7 +7,7 @@ from urllib.parse import urljoin
 
 class book_bookkey():
     def __init__(self):
-        self.version = '0.0.1'
+        self.version = '0.0.2'
         self.server_url = 'http://oa.9oe.com/index.php/book/apibook'
         self.baidu_url = 'https://www.baidu.com/s?wd='
 
