@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import sys
-sys.path.append('')
+import os
+sys.path.append(os.path.abspath(os.path.dirname(os.path.dirname(__file__))))
 sys.path.append('..')
-sys.path.append('..//test')
 print(sys.path)
 
 from test.test1 import test1
