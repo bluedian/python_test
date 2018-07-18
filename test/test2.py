@@ -3,7 +3,8 @@ import sys
 sys.path.append('..')
 print(sys.path)
 
-from test.test1 import test1
+#from test.test1 import test1
+import test1
 
 class test2():
     def __init__(self):
