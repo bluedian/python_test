@@ -6,7 +6,7 @@ print(sys.path)
 #from test.test1 import test1
 import test1
 
-class test2():
+class test2(object):
     def __init__(self):
         pass
 
