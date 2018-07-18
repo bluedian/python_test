@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import sys
+sys.path.append('')
 sys.path.append('..')
+sys.path.append('..//test')
 print(sys.path)
 
 from test.test1 import test1
