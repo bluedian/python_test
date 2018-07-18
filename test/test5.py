@@ -6,7 +6,7 @@ class test5(object):
         pass
 
     def tt(self):
-        t1=test1()
+        t1=test1.test1()
         t1.pp()
 
 
