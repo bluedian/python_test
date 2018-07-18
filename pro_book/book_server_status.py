@@ -25,7 +25,7 @@ class book_server_status():
         commond='python3 '+self.indexPathName
         comment=self.indexCronComt
         print(commond,comment)
-        gs_crontab_def.appendCron10(comd=commond,comt=comment)
+        gs_crontab_def.appendCron0(comd=commond,comt=comment)
 
         #gs_crontab.appendCron10(comd=commond,comt=comment)
 
