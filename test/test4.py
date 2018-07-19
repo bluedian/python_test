@@ -11,4 +11,5 @@ class test4(object):
 
 
 if __name__ == '__main__':
+    print('正确调用同级类')
     test4().tt()

@@ -8,6 +8,8 @@
           <option value="book_crontab" />
           <option value="gs_crontab" />
           <option value="gs_crontab_def" />
+          <option value="test1" />
+          <option value="bese_crontab" />
         </list>
       </option>
     </inspection_tool>

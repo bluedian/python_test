@@ -15,6 +15,7 @@ class book_server_status():
         self.indexName='book_server_status.py'
         self.indexPathName=self.indexPath+'\\'+self.indexName
         self.indexCronComt='job_book_server_status'
+        self.indexCronTime='*/2 * * * *'
         self.hostName = 'book_server'
         self.serverUrl = 'http://oa.9oe.com/index.php/book/apiserver'
 
