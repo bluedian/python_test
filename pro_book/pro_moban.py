@@ -12,7 +12,7 @@ class pro_moban():
         self.indexPath = os.path.abspath(os.path.dirname(__file__))
         self.indexName = 'pro_moban.py'
         self.indexPathName = self.indexPath + '\\' + self.indexName
-        self.indexRun='python3 '+self.indexPathName
+        self.indexRun = 'python3 ' + self.indexPathName
         self.indexCronComt = 'gsjob_pro_moban'
         self.indexCronTime = '*/2 * * * *'
         pass
@@ -26,9 +26,9 @@ class pro_moban():
 
     def init_cron(self):
         print('init')
-        #pass
-        cron=bese_crontab()
-        cron.appendCron(setmin=2,comd='python3 '+self.indexPathName,comt=self.indexCronComt)
+        # pass
+        cron = bese_crontab.bese_crontab()
+        cron.appendCron(setmin=2, comd='python3 ' + self.indexPathName, comt=self.indexCronComt)
 
     def run(self):
         print('run')
