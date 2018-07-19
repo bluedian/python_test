@@ -29,17 +29,14 @@ class bese_crontab():
         print(iter)
 
     def appendCron(self,setall=None,setmin=2,comd='echo date >> ~/time.log',comt='gsjob'):
-        self.delCron(self.coment)
+        self.delCron(comt)
         my_user_cron = self.my_cron
         job = my_user_cron.new(command=comd)
         job.set_comment(comt)
-        job.minute.every(10)
-
         if setall is None:
             job.minute.every(setmin)
         else:
             job.setall(setall)
-
         my_user_cron.write()
 
     def appendCron10(self,comd='echo date >> ~/time.log',comt='test_crontab_job'):
