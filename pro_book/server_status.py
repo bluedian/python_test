@@ -77,7 +77,6 @@ class server_status():
         print(bese_config.urlServer)
         self.update_status()
 
-
 if __name__ == '__main__':
     gs_class_self=server_status()
 
