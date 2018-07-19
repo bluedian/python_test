@@ -10,6 +10,7 @@
           <option value="gs_crontab_def" />
           <option value="test1" />
           <option value="bese_crontab" />
+          <option value="bese_config" />
         </list>
       </option>
     </inspection_tool>

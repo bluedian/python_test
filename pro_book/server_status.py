@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
-import sys
+import sys, os
 sys.path.append('..')
-import gs_config
-import gs_crontab_def
+
 import requests
 import socket
-import os
 
+import bese_config
 
 class server_status():
     def __init__(self):
@@ -22,7 +21,7 @@ class server_status():
         self.indexCronTime = '*/2 * * * *'
 
         self.hostName = 'book_server'
-        self.serverUrl = 'http://oa.9oe.com/index.php/book/apiserver'
+        # self.serverUrl = 'http://oa.9oe.com/index.php/book/apiserver'
 
     def info(self):
         '''
@@ -63,24 +62,20 @@ class server_status():
         return self.hostName
 
     def update_status(self):
-        statusurl = self.serverUrl
         try:
-            statusurl = gs_config.url_server_status
+            urlServer = bese_config.urlServer
         except:
             pass
         data = {
             'model': 'server_status_update',
             'server_info_name': self.get_hostname(),
         }
-        html = requests.post(url=statusurl, data=data).text
+        html = requests.post(url=urlServer, data=data).text
         print(html)
 
     def run(self):
+        print(bese_config.urlServer)
         self.update_status()
-
-
-
-
 
 
 if __name__ == '__main__':
