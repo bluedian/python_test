@@ -11,7 +11,7 @@ class pro_moban():
         self.version = '0.0.1'
         self.indexPath = os.path.abspath(os.path.dirname(__file__))
         self.indexName = 'pro_moban.py'
-        self.indexPathName = self.indexPath + '\\' + self.indexName
+        self.indexPathName = self.indexPath + '/' + self.indexName
         self.indexRun = 'python3 ' + self.indexPathName
         self.indexCronComt = 'gsjob_pro_moban'
         self.indexCronTime = '*/2 * * * *'
