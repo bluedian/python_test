@@ -25,10 +25,14 @@ class pro_moban():
         print('RUN:', self.indexRun)
 
     def init_cron(self):
-        print('init')
-        # pass
+        print('init_cron')
         cron = bese_crontab.bese_crontab()
         cron.appendCron(setmin=2, comd='python3 ' + self.indexPathName, comt=self.indexCronComt)
+
+    def del_cron(self):
+        print('del_cron')
+        cron = bese_crontab.bese_crontab()
+        cron.delCron(comt=self.indexCronComt)
 
     def run(self):
         print('run')
@@ -42,5 +46,7 @@ if __name__ == '__main__':
             pro_moban().init_cron()
         if sys.argv[1] == 'info':
             pro_moban().info()
+        if sys.argv[1] == 'del':
+            pro_moban().del_cron()
     else:
         pro_moban().run()
