@@ -23,7 +23,6 @@ class pro_moban():
         self.indexCronComt = 'gsjob_pro_moban'
         self.indexCronTime = '*/2 * * * *'
 
-
     def info(self):
         '''
         显示类的基本信息
@@ -34,7 +33,7 @@ class pro_moban():
         print('indexCronTime:', self.indexCronTime)
         print('indexCronComt:', self.indexCronComt)
 
-    def init_cron(self):
+    def init_cron(self, setM=2):
         '''
         增加类的时间任务执
         :return:
@@ -43,7 +42,7 @@ class pro_moban():
         commond = 'python3 ' + self.indexPathName
         comment = self.indexCronComt
         cron = bese_crontab.bese_crontab()
-        cron.appendCron(setmin=2, comd=commond, comt=comment)
+        cron.appendCron(setmin=setM, comd=commond, comt=comment)
 
     def del_cron(self):
         '''

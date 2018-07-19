@@ -21,7 +21,7 @@ class book_key():
         初始化
         '''
         self.indexName = 'book_key.py'
-        self.version = '0.0.1'
+        self.version = '1.0.1'
         self.indexPath = os.path.abspath(os.path.dirname(__file__))
         self.indexPathName = self.indexPath + '/' + self.indexName
 
@@ -30,7 +30,7 @@ class book_key():
 
         self.urlApiBook = 'http://oa.9oe.com/index.php/book/apibook'
         self.urlFindBaidu = 'https://www.baidu.com/s?wd='
-
+        # 测试时使用
         self.testBookName = '明朝败家子'
 
     def info(self):
@@ -52,7 +52,7 @@ class book_key():
         commond = 'python3 ' + self.indexPathName
         comment = self.indexCronComt
         cron = bese_crontab.bese_crontab()
-        cron.appendCron(setmin=2, comd=commond, comt=comment)
+        cron.appendCron(setmin=5, comd=commond, comt=comment)
 
     def del_cron(self):
         '''
@@ -132,7 +132,6 @@ class book_key():
         for item in a_all:
             if self.fun_is_link(item, book_name):
                 reList.append({'title': item.get_text(), 'linkUrl': item.attrs['href']})
-
         return reList
 
     def fun_is_link(self, subitem, book_name):
