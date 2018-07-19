@@ -29,7 +29,12 @@ class bese_crontab():
         print(iter)
 
     def appendCron(self,setall=None,setmin=2,comd='echo date >> ~/time.log',comt='gsjob'):
+        print('setall',setall)
+        print('setmin', setmin)
+        print('comd', comd)
+        print('comt', comt)
         self.delCron(comt)
+
         my_user_cron = self.my_cron
         job = my_user_cron.new(command=comd)
         job.set_comment(comt)
@@ -60,12 +65,11 @@ class bese_crontab():
         job.set_comment(comt)
         my_user_cron.write()
 
-    def delCron(self,comt='test_crontab_job'):
+    def delCron(self,comt='gsjob'):
         my_user_cron = self.my_cron
         iter = my_user_cron.find_comment(comt)
+        my_user_cron.remove(iter)
         my_user_cron.write()
-        #print(my_user_cron.remove(iter))
-
 
 if __name__ == '__main__':
     #test_crontab().appendCron()
