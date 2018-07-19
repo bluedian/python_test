@@ -2,21 +2,22 @@
 from crontab import CronTab
 import os
 
+
 class bese_crontab():
     def __init__(self):
         self.version = '0.0.2'
-        self.indexPath=os.path.abspath(os.path.dirname(__file__))
-        self.indexName='bese_crontab.py'
-        self.indexPathName=self.indexPath+'\\'+self.indexName
+        self.indexPath = os.path.abspath(os.path.dirname(__file__))
+        self.indexName = 'bese_crontab.py'
+        self.indexPathName = self.indexPath + '/' + self.indexName
 
-        self.my_cron=CronTab(user=True)
-        self.command=''
-        self.coment='test_crontab_job'
-        self.time_m='*'
-        self.time_h='*'
-        self.day_d='*'
-        self.day_m='*'
-        self.day_y='*'
+        self.my_cron = CronTab(user=True)
+        self.command = ''
+        self.coment = 'test_crontab_job'
+        self.time_m = '*'
+        self.time_h = '*'
+        self.day_d = '*'
+        self.day_m = '*'
+        self.day_y = '*'
 
     def appendCronTest(self):
         self.delCron(self.coment)
@@ -28,8 +29,8 @@ class bese_crontab():
         my_user_cron.write()
         print(iter)
 
-    def appendCron(self,setall=None,setmin=2,comd='echo date >> ~/time.log',comt='gsjob'):
-        print('setall',setall)
+    def appendCron(self, setall=None, setmin=2, comd='echo date >> ~/time.log', comt='gsjob'):
+        print('setall', setall)
         print('setmin', setmin)
         print('comd', comd)
         print('comt', comt)
@@ -44,7 +45,7 @@ class bese_crontab():
             job.setall(setall)
         my_user_cron.write()
 
-    def appendCron10(self,comd='echo date >> ~/time.log',comt='test_crontab_job'):
+    def appendCron10(self, comd='echo date >> ~/time.log', comt='test_crontab_job'):
         self.delCron(self.coment)
         my_user_cron = self.my_cron
         job = my_user_cron.new(command=comd)
@@ -52,9 +53,7 @@ class bese_crontab():
         job.minute.every(10)
         my_user_cron.write()
 
-
-
-    def appendCron_all(self,comd='echo date >> ~/time.log',comt='test_crontab_job'):
+    def appendCron_all(self, comd='echo date >> ~/time.log', comt='test_crontab_job'):
         self.delCron(self.coment)
         my_user_cron = self.my_cron
         job = my_user_cron.new(command=comd)
@@ -65,13 +64,14 @@ class bese_crontab():
         job.set_comment(comt)
         my_user_cron.write()
 
-    def delCron(self,comt='gsjob'):
+    def delCron(self, comt='gsjob'):
         my_user_cron = self.my_cron
         iter = my_user_cron.find_comment(comt)
         my_user_cron.remove(iter)
         my_user_cron.write()
 
+
 if __name__ == '__main__':
-    #test_crontab().appendCron()
+    # test_crontab().appendCron()
     print('test------>')
     gs_crontab().appendCron10()

@@ -1,28 +1,28 @@
 # -*- coding: utf-8 -*-
-import os, sys
-
+import sys
 sys.path.append('..')
+import gs_config
+import gs_crontab_def
+import requests
+import socket
+import os
 
-import bese_crontab
 
-
-class pro_moban():
-    '''
-    工程使用模板
-    '''
-
+class server_status():
     def __init__(self):
         '''
         初始化
         '''
-        self.indexName = 'pro_moban.py'
+        self.indexName = 'server_status.py'
         self.version = '0.0.1'
         self.indexPath = os.path.abspath(os.path.dirname(__file__))
         self.indexPathName = self.indexPath + '/' + self.indexName
 
-        self.indexCronComt = 'gsjob_pro_moban'
+        self.indexCronComt = 'gsjob_server_status'
         self.indexCronTime = '*/2 * * * *'
 
+        self.hostName = 'book_server'
+        self.serverUrl = 'http://oa.9oe.com/index.php/book/apiserver'
 
     def info(self):
         '''
@@ -54,17 +54,38 @@ class pro_moban():
         cron = bese_crontab.bese_crontab()
         cron.delCron(comt=self.indexCronComt)
 
+
+    def get_hostname(self):
+        try:
+            self.hostName = socket.gethostname()
+        except:
+            pass
+        return self.hostName
+
+    def update_status(self):
+        statusurl = self.serverUrl
+        try:
+            statusurl = gs_config.url_server_status
+        except:
+            pass
+        data = {
+            'model': 'server_status_update',
+            'server_info_name': self.get_hostname(),
+        }
+        html = requests.post(url=statusurl, data=data).text
+        print(html)
+
     def run(self):
-        '''
-        任务运行主函数
-        :return:
-        '''
-        print('run')
-        pass
+        self.update_status()
+
+
+
+
 
 
 if __name__ == '__main__':
-    gs_class_self = pro_moban()
+    gs_class_self=server_status()
+
     if len(sys.argv) == 2:
         if sys.argv[1] == 'init':
             gs_class_self.init_cron()
@@ -74,3 +95,4 @@ if __name__ == '__main__':
             gs_class_self.del_cron()
     else:
         gs_class_self.run()
+
