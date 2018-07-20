@@ -64,8 +64,8 @@ class book_scrapy():
             header = {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36',
             }
-            conn = requests.session()
-            req = conn.get(query_url, headers=header, timeout=2)
+            # conn = requests.session()
+            req = requests.get(query_url, headers=header, timeout=5)
             req.encoding = req.apparent_encoding
 
             reDate['htmlUrl'] = req.url
@@ -121,6 +121,7 @@ class book_scrapy():
         print('run')
         run_url = self.bookUrl
         run_html = self.fun_get_html(run_url)
+        print(run_html)
         if run_html is None:
             print('无网页')
             return
