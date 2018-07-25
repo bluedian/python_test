@@ -194,18 +194,7 @@ class book_scrapy():
         end_req = requests.post(url='http://oa.9oe.com/index.php/book/apibook', data=data).text
         print(end_req)
 
-        exit()
 
-        bookInfo = dict()
-        bookInfo['json'] = 'true'
-        bookInfo['model'] = 'scrapy_updata'
-        bookInfo['scrapy_url'] = 'scrapy_url'
-        bookInfo['info_book_title'] = 'info_book_title'
-        bookInfo['info_book_name'] = 'info_book_name'
-        bookInfo['info_book_author'] = 'info_book_author'
-        bookInfo['info_book_update'] = 'info_book_update'
-        bookInfo['info_book_uptext'] = 'info_book_uptext'
-        print(self.fun_work_test(bookInfo))
 
     def run_job(self):
 
@@ -243,21 +232,16 @@ class book_scrapy():
         bookInfo['info_book_subnum'] = 0
         bookInfo['info_book_sublist'] = []
 
-        print(bookInfo)
-        # print(self.fun_work_test(bookInfo))
+        # print(bookInfo)
 
         print('第四步,分析书章节')
         subList = self.fun_model_book_list(runSoup, 'dd > a[href]')
 
-        # for sub in subList:
-        #    print(sub)
 
         bookInfo['info_book_subnum'] = len(subList)
         bookInfo['info_book_sublist'] = subList
 
-        print('第五步,上传数据.测试上传')
-        # print(bookInfo)
-        # print(self.fun_work_test(bookInfo))
+        print('第五步,上传数据')
         message = self.fun_work_test(bookInfo)
         message = self.fun_work_url(bookInfo, query_url=self.workUrlJson, isJson=True)
 
@@ -272,13 +256,12 @@ class book_scrapy():
         end_req = requests.post(url='http://oa.9oe.com/index.php/book/apibook', data=data).text
         print(end_req)
 
-
     def run(self):
         '''
         任务运行主函数
         :return:
         '''
-        for i in range(1, 5):
+        for i in range(1, 3):
             self.run_job()
 
 
