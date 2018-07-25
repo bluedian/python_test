@@ -83,7 +83,7 @@ class book_scrapy():
 
     def fun_work_test(self, data):
         scrapy_test_url = 'http://www.123.com/index.php/book/apibook/api_json'
-        #scrapy_test_url = 'http://oa.9oe.com/index.php/book/apibook/reshow'
+        # scrapy_test_url = 'http://oa.9oe.com/index.php/book/apibook/reshow'
         if 'json' in data:
             return self.fun_work_url(data, query_url=scrapy_test_url, isJson=True)
         return self.fun_work_url(data, query_url=scrapy_test_url)
@@ -190,14 +190,10 @@ class book_scrapy():
             'message': 'dddddd测试测试',
             'error': '0'
         }
-
-        end_req = requests.post(url='http://oa.9oe.com/index.php/book/apibook', data=data).text
+        end_req = requests.post(url=self.workUrl, data=data).text
         print(end_req)
 
-
-
     def run_job(self):
-
         '''
         任务运行主函数
         :return:
@@ -237,7 +233,6 @@ class book_scrapy():
         print('第四步,分析书章节')
         subList = self.fun_model_book_list(runSoup, 'dd > a[href]')
 
-
         bookInfo['info_book_subnum'] = len(subList)
         bookInfo['info_book_sublist'] = subList
 
@@ -245,6 +240,7 @@ class book_scrapy():
         message = self.fun_work_test(bookInfo)
         message = self.fun_work_url(bookInfo, query_url=self.workUrlJson, isJson=True)
 
+        print('第六步,回传任务进度')
         data = {
             'model': 'work_job_updata',
             'url': runUrl,
@@ -252,7 +248,6 @@ class book_scrapy():
             'error': '0',
             'come_server': self.hostname
         }
-
         end_req = requests.post(url='http://oa.9oe.com/index.php/book/apibook', data=data).text
         print(end_req)
 
@@ -261,7 +256,7 @@ class book_scrapy():
         任务运行主函数
         :return:
         '''
-        for i in range(1, 3):
+        for i in range(1, 10):
             self.run_job()
 
 
@@ -276,4 +271,4 @@ if __name__ == '__main__':
             gs_class_self.del_cron()
     else:
         gs_class_self.run()
-        #gs_class_self.run_test()
+        # gs_class_self.run_test()
