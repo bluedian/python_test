@@ -30,6 +30,7 @@ class book_scrapy():
         self.indexCronTime = '*/2 * * * *'
         # test
         self.workUrl = 'http://oa.9oe.com/index.php/book/apibook'
+        self.workUrlJson = 'http://oa.9oe.com/index.php/book/apibook/api_json'
         # self.workUrl = 'http://www.123.com/index.php/book/apibook'
         self.bookUrl = 'https://www.biquta.com/1_1102/'
         self.rootUrl = ''
@@ -257,6 +258,7 @@ class book_scrapy():
         # print(bookInfo)
         # print(self.fun_work_test(bookInfo))
         message = self.fun_work_test(bookInfo)
+        message = self.fun_work_url(bookInfo, query_url=self.workUrlJson, isJson=True)
 
         data = {
             'model': 'work_job_updata',
@@ -268,14 +270,13 @@ class book_scrapy():
         end_req = requests.post(url='http://oa.9oe.com/index.php/book/apibook', data=data).text
         print(end_req)
 
-        exit()
 
     def run(self):
         '''
         任务运行主函数
         :return:
         '''
-        for i in range(1,7):
+        for i in range(1, 5):
             self.run_job()
 
 
