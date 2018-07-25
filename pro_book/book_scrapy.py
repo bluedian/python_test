@@ -9,6 +9,7 @@ import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 import json
+import socket
 
 
 class book_scrapy():
@@ -24,6 +25,7 @@ class book_scrapy():
         self.version = '0.0.1'
         self.indexPath = os.path.abspath(os.path.dirname(__file__))
         self.indexPathName = self.indexPath + '/' + self.indexName
+        self.hostname = socket.gethostname()
 
         self.indexCronComt = 'gsjob_book_scrapy'
         self.indexCronTime = '*/2 * * * *'
@@ -263,7 +265,8 @@ class book_scrapy():
             'model': 'work_job_updata',
             'url': runUrl,
             'message': message,
-            'error': '0'
+            'error': '0',
+            'come_server': self.hostname
         }
 
         end_req = requests.post(url='http://oa.9oe.com/index.php/book/apibook', data=data).text
