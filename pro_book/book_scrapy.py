@@ -30,6 +30,7 @@ class book_scrapy():
         self.indexCronTime = '*/2 * * * *'
         # test
         self.workUrl = 'http://oa.9oe.com/index.php/book/apibook'
+        # self.workUrl = 'http://www.123.com/index.php/book/apibook'
         self.bookUrl = 'https://www.biquta.com/1_1102/'
         self.rootUrl = ''
 
@@ -71,13 +72,16 @@ class book_scrapy():
             return req.text
         else:
             req = requests.post(query_url, data=data)
+            print(query_url)
+            print(data)
+            print(req.text)
             abc = req.json()
             if 'success' in abc:
                 return abc
 
     def fun_work_test(self, data):
-        # scrapy_test_url = 'http://www.123.com/index.php/book/apibook/reshow'
-        scrapy_test_url = 'http://oa.9oe.com/index.php/book/apibook/reshow'
+        scrapy_test_url = 'http://www.123.com/index.php/book/apibook/api_json'
+        #scrapy_test_url = 'http://oa.9oe.com/index.php/book/apibook/reshow'
         if 'json' in data:
             return self.fun_work_url(data, query_url=scrapy_test_url, isJson=True)
         return self.fun_work_url(data, query_url=scrapy_test_url)
@@ -114,17 +118,31 @@ class book_scrapy():
             return
         return soup.title.get_text()
 
-    def fun_model_book_info(self, soup, selectTag, num=999, isHtml=False):
+    def fun_model_book_info(self, soup, selectTag, num=999, isHtml=False, filter=None):
+        '''
+        据条件分析网页内容反回数据
+        :param soup: BS4类
+        :param selectTag: 查找的TAG标记(lmxl)
+        :param num: 排行第几个
+        :param isHtml: 是否返回HTML
+        :param filter: 过滤字段
+        :return:
+        '''
         try:
             if num == 999:
                 infoBook = soup.select(selectTag)
-                print(infoBook)
             else:
                 infoBook = soup.select(selectTag)[num]
             if infoBook:
                 if isHtml:
                     return infoBook
-                return infoBook.get_text()
+
+                if filter is None:
+                    return infoBook.get_text()
+
+                temp = infoBook.get_text()
+                temp1 = temp.replace(filter, '', 2)
+                return temp1
         except:
             pass
         return
@@ -148,10 +166,9 @@ class book_scrapy():
         return urljoin(self.rootUrl, pathUrl)
 
     def work_job_get(self):
-        data = {'aaa': 'aaa'}
+        data = {'model': 'work_job_get'}
         work = self.fun_work_url(data)
-        # print(work)
-        # print(work['scrapyurl'])
+
         return work['scrapyurl']
 
     def work_job_update(self, bookInfo):
@@ -159,15 +176,33 @@ class book_scrapy():
         work = self.fun_work_url(bookInfo)
 
     def run_test(self):
+
+        print('run')
+        print('第一步,取采集地址(网络取)')
+        runUrl = self.work_job_get()
+        print(runUrl)
+
+        data = {
+            'model': 'work_job_updata',
+            'url': runUrl,
+            'message': 'dddddd测试测试',
+            'error': '0'
+        }
+
+        end_req = requests.post(url='http://oa.9oe.com/index.php/book/apibook', data=data).text
+        print(end_req)
+
+        exit()
+
         bookInfo = dict()
         bookInfo['json'] = 'true'
+        bookInfo['model'] = 'scrapy_updata'
         bookInfo['scrapy_url'] = 'scrapy_url'
         bookInfo['info_book_title'] = 'info_book_title'
         bookInfo['info_book_name'] = 'info_book_name'
         bookInfo['info_book_author'] = 'info_book_author'
         bookInfo['info_book_update'] = 'info_book_update'
         bookInfo['info_book_uptext'] = 'info_book_uptext'
-
         print(self.fun_work_test(bookInfo))
 
     def run_job(self):
@@ -196,16 +231,17 @@ class book_scrapy():
         print('第三步,分析书内容')
         bookInfo = dict()
         bookInfo['json'] = 'true'
+        bookInfo['model'] = 'scrapy_updata'
         bookInfo['scrapy_url'] = runUrl
         bookInfo['info_book_title'] = self.fun_soup_title(runSoup)
         bookInfo['info_book_name'] = self.fun_model_book_info(runSoup, 'div#info > h1', 0)
-        bookInfo['info_book_author'] = self.fun_model_book_info(runSoup, 'div#info > p', 0)
-        bookInfo['info_book_update'] = self.fun_model_book_info(runSoup, 'div#info > p', 2)
-        bookInfo['info_book_uptext'] = self.fun_model_book_info(runSoup, 'div#info > p:(4) > a ', 0)
+        bookInfo['info_book_author'] = self.fun_model_book_info(runSoup, 'div#info > p', 0, filter='作  者：')
+        bookInfo['info_book_update'] = self.fun_model_book_info(runSoup, 'div#info > p', 2, filter='最后更新：')
+        bookInfo['info_book_uptext'] = self.fun_model_book_info(runSoup, 'div#info > p:nth-of-type(4) > a', 0)
         bookInfo['info_book_subnum'] = 0
         bookInfo['info_book_sublist'] = []
 
-        # print(bookInfo)
+        print(bookInfo)
         # print(self.fun_work_test(bookInfo))
 
         print('第四步,分析书章节')
@@ -219,7 +255,18 @@ class book_scrapy():
 
         print('第五步,上传数据.测试上传')
         # print(bookInfo)
-        print(self.fun_work_test(bookInfo))
+        # print(self.fun_work_test(bookInfo))
+        message = self.fun_work_test(bookInfo)
+
+        data = {
+            'model': 'work_job_updata',
+            'url': runUrl,
+            'message': message,
+            'error': '0'
+        }
+
+        end_req = requests.post(url='http://oa.9oe.com/index.php/book/apibook', data=data).text
+        print(end_req)
 
         exit()
 
@@ -228,7 +275,7 @@ class book_scrapy():
         任务运行主函数
         :return:
         '''
-        for i in range(1):
+        for i in range(1,7):
             self.run_job()
 
 

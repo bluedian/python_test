@@ -1,0 +1,9 @@
+提交数据测试上传 并反馈数据
+http://www.123.com/index.php/book/apibook/reshow
+
+json数据上传接口
+http://www.123.com/index.php/book/apibook/api_json
+
+    提交数据包括
+    bookInfo['json'] = 'true'
+    bookInfo['model'] = 'scrapy_update'
