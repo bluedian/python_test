@@ -11,7 +11,8 @@ class bese_crontab():
         self.indexPathName = self.indexPath + '/' + self.indexName
 
         # self.my_cron = CronTab(user=True)
-        self.my_cron = CronTab()
+        # self.my_cron = CronTab()
+        self.my_cron = CronTab(user='root')
         self.command = ''
         self.coment = 'test_crontab_job'
         self.time_m = '*'
