@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import sys, os
+
 sys.path.append('..')
 
 import requests
@@ -8,13 +9,14 @@ import socket
 import bese_config
 import bese_crontab
 
+
 class server_status():
     def __init__(self):
         '''
         初始化
         '''
         self.indexName = 'server_status.py'
-        self.version = '0.0.1'
+        self.version = '0.0.3'
         self.indexPath = os.path.abspath(os.path.dirname(__file__))
         self.indexPathName = self.indexPath + '/' + self.indexName
 
@@ -54,7 +56,6 @@ class server_status():
         cron = bese_crontab.bese_crontab()
         cron.delCron(comt=self.indexCronComt)
 
-
     def get_hostname(self):
         try:
             self.hostName = socket.gethostname()
@@ -68,8 +69,9 @@ class server_status():
         except:
             pass
         data = {
-            'model': 'server_status_update',
-            'server_info_name': self.get_hostname(),
+            'model': 'status',
+            'server_hostname': self.get_hostname(),
+            'server_version': self.version,
         }
         html = requests.post(url=urlServer, data=data).text
         print(html)
@@ -78,8 +80,9 @@ class server_status():
         print(bese_config.urlServer)
         self.update_status()
 
+
 if __name__ == '__main__':
-    gs_class_self=server_status()
+    gs_class_self = server_status()
 
     if len(sys.argv) == 2:
         if sys.argv[1] == 'init':
@@ -90,4 +93,3 @@ if __name__ == '__main__':
             gs_class_self.del_cron()
     else:
         gs_class_self.run()
-
