@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import sys, os
-
 sys.path.append('..')
 
 import requests
@@ -8,7 +7,6 @@ import socket
 
 import bese_config
 import bese_crontab
-
 
 class server_status():
     def __init__(self):
@@ -21,7 +19,7 @@ class server_status():
         self.indexPathName = self.indexPath + '/' + self.indexName
 
         self.indexCronComt = 'gsjob_server_status'
-        self.indexCronTime = '*/2 * * * *'
+        self.indexCronTime = '*/3 * * * *'
 
         self.hostName = 'book_server'
         # self.serverUrl = 'http://oa.9oe.com/index.php/book/apiserver'
