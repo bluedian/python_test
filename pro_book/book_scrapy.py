@@ -198,21 +198,39 @@ class book_scrapy():
         任务运行主函数
         :return:
         '''
+
+        data = {
+            'model': 'work_job_updata',
+            'url': '',
+            'message': '',
+            'error': '0',
+            'come_server': self.hostname
+        }
+
         print('run')
         print('第一步,取采集地址(网络取)')
         runUrl = self.work_job_get()
+
+        data['url'] = runUrl
 
         print('第二步,分析主域名,分析网页')
         self.rootUrl = urljoin(runUrl, '\\')
         runHtml = self.fun_get_html(runUrl)
 
         if runHtml is None:
-            print('无网页')
+            data['error'] = '2'
+            data['message'] = '打不开网站'
+            end_req = requests.post(url='http://oa.9oe.com/index.php/book/apibook', data=data).text
+            print(end_req)
             return
 
         runSoup = self.fun_soup(runHtml)
         if runSoup is None:
             print('soup 无对象')
+            data['error'] = '3'
+            data['message'] = 'soup 无对象'
+            end_req = requests.post(url='http://oa.9oe.com/index.php/book/apibook', data=data).text
+            print(end_req)
             return
 
         print('第三步,分析书内容')
@@ -241,13 +259,7 @@ class book_scrapy():
         message = self.fun_work_url(bookInfo, query_url=self.workUrlJson, isJson=True)
 
         print('第六步,回传任务进度')
-        data = {
-            'model': 'work_job_updata',
-            'url': runUrl,
-            'message': message,
-            'error': '0',
-            'come_server': self.hostname
-        }
+        data['message'] = message
         end_req = requests.post(url='http://oa.9oe.com/index.php/book/apibook', data=data).text
         print(end_req)
 

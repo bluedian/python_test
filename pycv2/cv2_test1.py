@@ -7,7 +7,7 @@ import time
 
 def abc():
     imagepath = '123.jpg'
-    imagepath = 'all_01.jpg'
+    # imagepath = 'all_01.jpg'
     image = cv2.imread(imagepath)
     face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
     img2 = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -15,7 +15,7 @@ def abc():
     # cv2.imshow("Image Title",img2)
     # cv2.waitKey(0)
 
-    faces = face_cascade.detectMultiScale(img2, scaleFactor=1.15, minNeighbors=5, minSize=(5, 5), )
+    faces = face_cascade.detectMultiScale(img2, scaleFactor=1.1, minNeighbors=9, minSize=(5, 5), )
     # faces = face_cascade.detectMultiScale(img2, scaleFactor=1.1, minNeighbors=5, minSize=(100, 100))
 
     print("发现{0}个人脸!".format(len(faces)))
@@ -112,6 +112,6 @@ Target = ('guo.jpg')
 value = 0.9
 # mathc_img(image,Target,value)
 
-# abc()
+abc()
 # pp()
-getCam()
+#getCam()

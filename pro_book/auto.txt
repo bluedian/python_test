@@ -1,3 +1,12 @@
+项目地址
+https://github.com/bluedian/python_test.git
+
+发布方式
+mkdir gs && cd gs && git clone https://github.com/bluedian/python_test.git
+
+python3 python_text/pro_book/book_scrapy.py init
+
+
 提交数据测试上传 并反馈数据
 http://www.123.com/index.php/book/apibook/reshow
 
