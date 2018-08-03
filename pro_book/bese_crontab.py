@@ -5,7 +5,7 @@ import os
 
 class bese_crontab():
     def __init__(self):
-        self.version = '0.0.3'
+        self.version = '0.0.4'
         self.indexPath = os.path.abspath(os.path.dirname(__file__))
         self.indexName = 'bese_crontab.py'
         self.indexPathName = self.indexPath + '/' + self.indexName
