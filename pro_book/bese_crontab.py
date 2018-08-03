@@ -5,7 +5,7 @@ import os
 
 class bese_crontab():
     def __init__(self):
-        self.version = '0.0.2'
+        self.version = '0.0.3'
         self.indexPath = os.path.abspath(os.path.dirname(__file__))
         self.indexName = 'bese_crontab.py'
         self.indexPathName = self.indexPath + '/' + self.indexName
@@ -76,4 +76,4 @@ class bese_crontab():
 if __name__ == '__main__':
     # test_crontab().appendCron()
     print('test------>')
-    gs_crontab().appendCron10()
+    bese_crontab().appendCron10()
