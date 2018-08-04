@@ -4,6 +4,7 @@ sys.path.append('..')
 
 import requests
 import socket
+import json
 
 import bese_config
 import bese_crontab
@@ -14,7 +15,7 @@ class server_status():
         初始化
         '''
         self.indexName = 'server_status.py'
-        self.version = '0.0.4'
+        self.version = '0.0.5'
         self.indexPath = os.path.abspath(os.path.dirname(__file__))
         self.indexPathName = self.indexPath + '/' + self.indexName
 
@@ -73,6 +74,17 @@ class server_status():
         }
         html = requests.post(url=urlServer, data=data).text
         print(html)
+        try:
+            json_html = json.loads(html)
+            print(json_html['result'])
+            print(json_html['result']['version'])
+            if self.version == json_html['result']['version']:
+                print('OK')
+            else:
+                self.update_git()
+        except:
+            pass
+
 
     def update_git(self):
         path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
