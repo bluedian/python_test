@@ -14,7 +14,7 @@ class server_status():
         初始化
         '''
         self.indexName = 'server_status.py'
-        self.version = '0.0.3'
+        self.version = '0.0.4'
         self.indexPath = os.path.abspath(os.path.dirname(__file__))
         self.indexPathName = self.indexPath + '/' + self.indexName
 
@@ -76,14 +76,13 @@ class server_status():
 
     def update_git(self):
         path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-        print('cd %s && git pull' % path)
-        print(os.system('cd %s && git pull' % path))
+        os.system('cd %s && git pull' % path)
+        print('up version:', self.version)
 
 
     def run(self):
         print(bese_config.urlServer)
         self.update_status()
-
 
 if __name__ == '__main__':
     gs_class_self = server_status()
