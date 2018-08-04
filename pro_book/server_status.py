@@ -75,12 +75,8 @@ class server_status():
         print(html)
 
     def update_git(self):
-
         path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-        print(path)
-        print(path + ' && git pull')
         print('cd %s && git pull' % path)
-        print(os.system("ls"))
         print(os.system('cd %s && git pull' % path))
 
 
