@@ -79,9 +79,9 @@ class server_status():
         path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
         print(path)
         print(path + ' && git pull')
-        print('%s && git pull' % path)
+        print('cd %s && git pull' % path)
         print(os.system("ls"))
-        print(os.system("git pull"))
+        print(os.system('cd %s && git pull' % path))
 
 
     def run(self):
