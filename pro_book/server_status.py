@@ -79,6 +79,7 @@ class server_status():
         path = os.path.abspath(os.path.dirname(__file__))
         print(path)
         print(path + ' && git clone https://github.com/bluedian/python_test.git')
+        print('%s && git clone https://github.com/bluedian/python_test.git' % path)
         print(os.system("ls"))
         print(os.system("git clone https://github.com/bluedian/python_test.git"))
 
