@@ -75,7 +75,12 @@ class server_status():
         print(html)
 
     def update_git(self):
+
+        path = os.path.abspath(os.path.dirname(__file__))
+        print(path)
+        print(path + ' && git clone https://github.com/bluedian/python_test.git')
         print(os.system("ls"))
+        print(os.system("git clone https://github.com/bluedian/python_test.git"))
 
 
     def run(self):
