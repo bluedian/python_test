@@ -120,7 +120,7 @@ class book_scrapy():
             return
         return soup.title.get_text()
 
-    def fun_model_book_info(self, soup, selectTag, num=999, isHtml=False, filter=None):
+    def fun_model_book_info(self, soup, selectTag, num=999, filter=None, isHtml=False, ):
         '''
         据条件分析网页内容反回数据
         :param soup: BS4类

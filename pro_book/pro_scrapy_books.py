@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 import os, sys
-
 sys.path.append('..')
+from bs4 import BeautifulSoup
+import requests
 
 import bese_crontab
-
+import bese_unitl
 
 class pro_scrapy_books():
     '''
     工程使用模板
     '''
-
     def __init__(self):
         '''
         初始化
@@ -59,11 +59,13 @@ class pro_scrapy_books():
         :return:
         '''
         print('run')
+
+        print(bese_unitl.unitGetHtml('http://www.163.com'))
         pass
 
 
 if __name__ == '__main__':
-    gs_class_self = pro_moban()
+    gs_class_self = pro_scrapy_books()
     if len(sys.argv) == 2:
         if sys.argv[1] == 'init':
             gs_class_self.init_cron()
