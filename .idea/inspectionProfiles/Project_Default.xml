@@ -11,6 +11,7 @@
           <option value="test1" />
           <option value="bese_crontab" />
           <option value="bese_config" />
+          <option value="bese_unitl" />
         </list>
       </option>
     </inspection_tool>

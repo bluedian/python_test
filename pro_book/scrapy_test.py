@@ -79,7 +79,7 @@ def test():
         plan = json_data['result']['plan']
 
         # print(bookinfo)
-        # print(plan)
+        print(plan)
         print(bookinfo['url'])
         planBookupdate = plan['bookupdate']
 
